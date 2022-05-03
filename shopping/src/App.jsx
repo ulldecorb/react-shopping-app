@@ -1,12 +1,26 @@
 import React from 'react';
+import {
+  BrowserRouter as Router,
+  Routes,
+  Route
+} from 'react-router-dom';
 import { Header } from './components/header';
+import Gallery from './components/gallery';
+import Home from './components/home';
+import NotFound from './components/not-found';
 // import './App.css';
 
 function App() {
   return (
-    <div className="App">
+    <Router>
       <Header />
-    </div>
+      <Routes>
+        <Route path="/gallery" element={<Gallery />} />
+        <Route path="/" element={<Home />} />
+        <Route path="*" element={<NotFound />} />
+      </Routes>
+
+    </Router>
   );
 }
 

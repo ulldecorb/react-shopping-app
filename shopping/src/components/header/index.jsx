@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 export const Header = function Header() {
   return (
@@ -11,6 +12,16 @@ export const Header = function Header() {
         <div className="flex justify-center mr-4">
           chart
         </div>
+      </div>
+      <div>
+        <ul>
+          <li>
+            <Link to="/">Home</Link>
+          </li>
+          <li>
+            <Link to="/gallery">Gallery</Link>
+          </li>
+        </ul>
       </div>
     </header>
   );
