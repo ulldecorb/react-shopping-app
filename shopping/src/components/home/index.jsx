@@ -6,10 +6,10 @@ function Home() {
     <main>
       {Products.map((product) => (
         <article key={product.id}>
-          <h2>{product.productNamename}</h2>
-          <p>{product.stock}</p>
-          <p>{product.stock}</p>
+          <h2>{product.productName}</h2>
           <p>{product.ntf}</p>
+          <p>{product.stock}</p>
+          <p>{product.category}</p>
         </article>
       ))}
     </main>
