@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 export const Header = function Header() {
   return (
-    <header className="w-full h-12 bg-slate-200 flex flex-row justify-center basis-1/1">
+    <header className="fixed top-0 left-0 right-0 w-full h-12 bg-slate-200 flex flex-row justify-center basis-1/1">
       <Link to="/">
         <h1 className="text-3xl text-blue-600/100 font-bold underline flex justify-center basis-1/2">SHOP CENTER</h1>
       </Link>
