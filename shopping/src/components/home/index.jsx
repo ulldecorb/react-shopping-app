@@ -1,19 +1,21 @@
 import React from 'react';
-import { Products } from '../../constants/products';
+import PropTypes from 'prop-types';
+import ProductCard from '../product-card';
 
-function Home() {
+function Home({ products }) {
   return (
-    <main>
-      {Products.map((product) => (
-        <article key={product.id}>
-          <h2>{product.productName}</h2>
-          <p>{product.ntf}</p>
-          <p>{product.stock}</p>
-          <p>{product.category}</p>
-        </article>
+    <main className="mt-20">
+      {products.map((product) => (
+        <ProductCard key={product.id} product={product} />
       ))}
     </main>
   );
 }
+
+Home.propTypes = {
+  products: PropTypes.arrayOf(
+    PropTypes.object
+  ).isRequired
+};
 
 export default Home;
