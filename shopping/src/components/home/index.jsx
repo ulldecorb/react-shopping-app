@@ -1,12 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import ProductDetail from '../product-card';
+import ProductCard from '../product-card';
 
 function Home({ products }) {
   return (
     <main className="mt-20">
       {products.map((product) => (
-        <ProductDetail key={product.id} product={product} />
+        <ProductCard key={product.id} product={product} />
       ))}
     </main>
   );

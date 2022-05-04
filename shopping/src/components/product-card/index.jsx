@@ -1,15 +1,15 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-function ProductDetail({ product }) {
+function ProductCard({ product }) {
   const {
     productName, ntf, price, stock, category
   } = product;
 
   return (
-    <article className="h-48 w-48 m-8 rounded-md bg-slate-800 shadow-md text-slate-50">
+    <article className="h-48 w-48 m-8 rounded-md bg-slate-800 shadow-md text-slate-50 flex flex-col items-center">
       <h2 className="text-xl w-full text-center">{productName.toUpperCase()}</h2>
-      <p>{ntf}</p>
+      <p className="w-20 h-20 bg-slate-200 rounded-md text-2xl flex justify-center items-center ">{ntf}</p>
       <p>
         Price:
         {' '}
@@ -26,7 +26,7 @@ function ProductDetail({ product }) {
   );
 }
 
-ProductDetail.propTypes = {
+ProductCard.propTypes = {
   product: PropTypes.shape({
     ntf: PropTypes.string.isRequired,
     id: PropTypes.string.isRequired,
@@ -37,4 +37,4 @@ ProductDetail.propTypes = {
   }).isRequired
 };
 
-export default ProductDetail;
+export default ProductCard;
