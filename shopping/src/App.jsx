@@ -10,7 +10,7 @@ import Gallery from './components/gallery';
 import Cart from './components/cart';
 import NotFound from './components/not-found';
 import Detail from './components/detail';
-import { Products } from './constants/products';
+import { Products, Users } from './constants/products';
 
 // import './App.css';
 
@@ -21,7 +21,7 @@ function App() {
       <Routes>
         <Route path="/gallery" element={<Gallery products={Products} />} />
         <Route path="/" element={<Home products={Products} />} />
-        <Route path="/cart" element={<Cart />} />
+        <Route path="/cart" element={<Cart products={Products} user={Users[0]} />} />
         <Route path="/:productId" element={<Detail products={Products} />} />
         <Route path="*" element={<NotFound />} />
       </Routes>

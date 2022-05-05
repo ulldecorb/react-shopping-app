@@ -4,7 +4,7 @@ import ProductCard from '../product-card';
 
 function Home({ products }) {
   return (
-    <main className="mt-20">
+    <main className="w-full pt-12  pb-12 bg-slate-600 flex-wrap">
       {products.map((product) => (
         <ProductCard key={product.id} product={product} />
       ))}
