@@ -12,7 +12,7 @@ function Cart({ products, user }) {
   console.log(productCart);
   return (
     <main className="bg-yellow-600 mt-12 w-full h-full">
-      <h2 className="w-full text-center text-4xl text-lime-400 ">Cart</h2>
+      <h2 className="w-full text-center text-4xl text-lime-400 font-koulen ">Cart</h2>
       <h3>{user.userName}</h3>
       {products.filter((product) => product.id === productCartId[0]).map((product) => (
         <article key={product.id}>
