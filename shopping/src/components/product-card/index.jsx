@@ -1,13 +1,23 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-function ProductCard({ product }) {
+function ProductCard({ product, handleCliker }) {
   const {
     productName, ntf, price, stock, category
   } = product;
 
+  const click = () => {
+    handleCliker();
+  };
+
   return (
-    <article className="relative h-48 w-48 m-8 rounded-md bg-slate-800 shadow-md  shadow-stone-800  cursor-pointer hover:outline outline-offset-2 outline-2 text-slate-50 flex flex-col items-center">
+    <article
+      className="relative h-48 w-48 m-8 rounded-md bg-slate-800 shadow-md  shadow-stone-800  cursor-pointer hover:outline outline-offset-2 outline-2 text-slate-50 flex flex-col items-center"
+      onClick={() => click()}
+      // eslint-disable-next-line jsx-a11y/no-noninteractive-element-to-interactive-role
+      role="button"
+      aria-hidden
+    >
       <h2 className="text-xl w-full text-center font-koulen">{productName.toUpperCase()}</h2>
       <p className="w-20 h-20 bg-slate-200 rounded-md text-5xl hover:text-6xl flex justify-center items-center ">{ntf}</p>
       <p>
@@ -38,7 +48,8 @@ ProductCard.propTypes = {
     category: PropTypes.string.isRequired,
     stock: PropTypes.number.isRequired,
     price: PropTypes.number.isRequired
-  }).isRequired
+  }).isRequired,
+  handleCliker: PropTypes.func.isRequired
 };
 
 export default ProductCard;
