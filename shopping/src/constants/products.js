@@ -22,11 +22,17 @@ export const Products = [
   },
   {
     ntf: '🥑', id: '8', productName: 'avocado', category: 'meal', stock: 9, price: 34
+  },
+  {
+    ntf: '☠', id: '9', productName: 'death', category: 'human', stock: 1, price: 666
   }
+  // {
+  //   ntf: '🏃‍♂️💨', id: '10', productName: 'hurry', category: 'human', stock: 34, price: 80
+  // },
+  // {
+  //   ntf: '🤜💥🤛', id: '11', productName: 'rock', category: 'human', stock: 3, price: 600
+  // }
 ];
 
-export const Users = [
-  { userName: 'john Doe', cart: [{ productId: '7', quanty: 5 }, { productId: '3', quanty: 35 }], favoritesId: ['7', '5'] }
-];
-
+export const User = { userName: 'john Doe', cart: [{ productId: '7', quanty: 5 }, { productId: '3', quanty: 35 }], favoritesId: ['7', '5'] };
 export default Products;

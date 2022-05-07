@@ -2,19 +2,12 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import ProductCard from '../product-card';
 
-// function Cart() {
-function Cart({ products, user }) {
-  const productCartId = user.cart.map((product) => product.productId);
-  const productId = products.map((product) => product.id);
-  const productCart = 'Reduce para obtener los productor a mapear';
-  console.log(productCartId);
-  console.log(productId);
-  console.log(productCart);
+function Cart({ cart, user }) {
   return (
-    <main className="bg-yellow-600 mt-12 w-full h-full">
+    <main className="bg-yellow-600 mt-12 w-full h-screen">
       <h2 className="w-full text-center text-4xl text-lime-400 font-koulen ">Cart</h2>
       <h3>{user.userName}</h3>
-      {products.filter((product) => product.id === productCartId[0]).map((product) => (
+      {cart.map((product) => (
         <article key={product.id}>
           <ProductCard product={product} />
           <p>
@@ -30,7 +23,7 @@ function Cart({ products, user }) {
 }
 
 Cart.propTypes = {
-  products: PropTypes.arrayOf(PropTypes.object).isRequired,
+  cart: PropTypes.arrayOf(PropTypes.object).isRequired,
   user: PropTypes.shape({
     userName: PropTypes.string.isRequired,
     cart: PropTypes.arrayOf(PropTypes.object).isRequired,
