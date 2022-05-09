@@ -2,14 +2,20 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import ProductCard from '../product-card';
 
-function Favorites({ favorites, handleCliker }) {
+function Favorites({ favorites, handleToggleFavorites }) {
   return (
-    <main className="bg-yellow-600 mt-12 w-full h-screen">
-      <h2 className="w-full text-center text-4xl text-lime-400 font-koulen flex flex-wrap justify-center content-start ">
+    <main className="bg-yellow-600 pt-12 w-full h-screen flex flex-wrap justify-center content-start ">
+      <h2 className="w-full text-center text-4xl
+      text-lime-400 font-koulen flex flex-wrap justify-center content-start "
+      >
         Favorites
       </h2>
       {favorites.map((product) => (
-        <ProductCard key={product.id} product={product} handleCliker={handleCliker} />
+        <ProductCard
+          key={product.id}
+          product={product}
+          handleToggleFavorites={handleToggleFavorites}
+        />
       ))}
     </main>
   );
@@ -19,7 +25,7 @@ Favorites.propTypes = {
   favorites: PropTypes.arrayOf(
     PropTypes.object
   ).isRequired,
-  handleCliker: PropTypes.func.isRequired
+  handleToggleFavorites: PropTypes.func.isRequired
 };
 
 export default Favorites;

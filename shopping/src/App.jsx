@@ -15,12 +15,12 @@ import Detail from './components/detail';
 import { Products, User } from './constants/products';
 
 function App() {
-  const [user, setUser] = useState(User);
+  const [user, setUser] = useState({ ...User });
   const [cart, setCart] = useState([]);
   const [favorites, setFavorites] = useState([]);
 
   const getCartList = () => {
-    const { userCart } = User;
+    const { userCart } = user;
     const cartList = userCart.reduce(
       (arr, cur) => {
         let newProduct = Products.find((x) => x.id === cur.productId);
@@ -36,7 +36,7 @@ function App() {
   };
 
   const listById = () => {
-    const { favoritesId } = User;
+    const { favoritesId } = user;
     const favoritesIdList = favoritesId.reduce(
       (arr, cur) => {
         const newProduct = Products.find((x) => x.id === cur);
@@ -45,20 +45,21 @@ function App() {
       []
     );
     setFavorites(favoritesIdList);
-    console.log('favorites: ', favorites);
   };
 
   useEffect(() => {
     getCartList();
     listById();
-  }, []);
+  }, [user]);
 
-  const handleToggleFavorites = () => {
-    const newCart = { ...user };
-    newCart.cart.push({ productId: '9', quanty: 1 });
-    setUser(newCart);
-
-    getCartList();
+  const handleToggleFavorites = (id) => {
+    const newUser = { ...user };
+    const { favoritesId } = newUser;
+    const newFavorites = favoritesId.some((x) => x === id)
+      ? favoritesId.filter((x) => x !== id)
+      : [...favoritesId, id];
+    newUser.favoritesId = newFavorites;
+    setUser(newUser);
   };
 
   return (

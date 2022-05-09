@@ -5,7 +5,7 @@ import ProductCard from '../product-card';
 function Cart({ cart, handleToggleFavorites }) {
   console.log(cart);
   return (
-    <main className="bg-yellow-600 mt-12 w-full h-screen">
+    <main className="bg-yellow-600 pt-12 w-full h-screen flex flex-wrap justify-center content-start ">
       <h2 className="w-full text-center text-4xl text-lime-400 font-koulen flex flex-wrap justify-center content-start ">Cart</h2>
       {/* <h3>{user.userName}</h3> */}
       {cart.map((product) => (

@@ -13,10 +13,6 @@ function ProductCard({ product, handleToggleFavorites }) {
   return (
     <article
       className="relative h-48 w-48 m-8 rounded-md bg-slate-800 shadow-md  shadow-stone-800  cursor-pointer hover:outline outline-offset-2 outline-2 text-slate-50 flex flex-col items-center"
-      onClick={() => handleToggleFavoritesClick(id)}
-      // eslint-disable-next-line jsx-a11y/no-noninteractive-element-to-interactive-role
-      role="button"
-      aria-hidden
     >
       <h2 className="text-xl w-full text-center font-koulen">{productName.toUpperCase()}</h2>
       <p className="w-20 h-20 bg-slate-200 rounded-md text-5xl hover:text-6xl flex justify-center items-center ">{ntf}</p>
@@ -32,7 +28,14 @@ function ProductCard({ product, handleToggleFavorites }) {
         {' '}
         {category}
       </h3>
-      <div className="h-12 w-12 absolute -top-4 -right-4 bg-slate-400 hover:bg-slate-50 rounded-full flex justify-center items-center">
+      <div
+        className="h-12 w-12 absolute -top-4 -right-4 bg-slate-400 hover:bg-slate-50 rounded-full flex justify-center items-center"
+        onClick={() => handleToggleFavoritesClick(id)}
+              // eslint-disable-next-line jsx-a11y/no-noninteractive-element-to-interactive-role
+        role="button"
+        aria-hidden
+      >
+
         <p className="text-2xl">🧡</p>
 
       </div>
