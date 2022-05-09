@@ -42,4 +42,5 @@ export const User = {
   ],
   favoritesId: ['7', '5']
 };
+
 export default Products;

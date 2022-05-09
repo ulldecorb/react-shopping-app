@@ -25,20 +25,37 @@ function App() {
     const { userCart } = User;
     const cartList = userCart.reduce(
       (arr, cur) => {
-        const newProduct = Products.find((x) => x.id === cur.productId);
-        newProduct.quanty = userCart.find((x) => x.productId === cur.productId).quanty;
+        let newProduct = Products.find((x) => x.id === cur.productId);
+        newProduct = {
+          ...newProduct,
+          quanty: userCart.find((x) => x.productId === cur.productId).quanty
+        };
         return [...arr, newProduct];
       },
       []
     );
     setCart(cartList);
-    console.log(Products);
   };
 
+  const listById = () => {
+    const { favoritesId } = User;
+    const favoritesIdList = favoritesId.reduce(
+      (arr, cur) => {
+        const newProduct = Products.find((x) => x.id === cur);
+        return [...arr, newProduct];
+      },
+      // [...arr, arrayOfObject.find((x) => cur.id === x.id)]
+
+      []
+    );
+    console.log('favoritesIdList : ', favoritesIdList);
+    return favoritesIdList;
+  };
   useEffect(() => {
-    console.log(cart);
     getCartList();
-    console.log(cart);
+    listById();
+    console.log('cart : ', cart);
+    console.log('Products : ', Products);
   }, []);
 
   const handleCliker = () => {
