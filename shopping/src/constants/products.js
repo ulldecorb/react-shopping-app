@@ -34,5 +34,12 @@ export const Products = [
   // }
 ];
 
-export const User = { userName: 'john Doe', cart: [{ productId: '7', quanty: 5 }, { productId: '3', quanty: 35 }], favoritesId: ['7', '5'] };
+export const User = {
+  userName: 'john Doe',
+  userCart: [
+    { productId: '7', quanty: 5 },
+    { productId: '3', quanty: 35 }
+  ],
+  favoritesId: ['7', '5']
+};
 export default Products;
