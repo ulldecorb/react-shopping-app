@@ -8,9 +8,13 @@ export const Header = function Header() {
         <h1 className="text-3xl text-sky-100 font-bold font-koulen flex justify-center basis-1/2 hover:text-sky-300">SHOP CENTER</h1>
       </Link>
       <div className="flex flex-row basis-1/4 justify-end">
-        <div className="flex flex-row justify-center items-center mr-4">
-          LogIn or SignIn
+        <div className="flex justify-center items-center mr-4 h-8 w-8 bg-sky-100 rounded-full hover:bg-sky-300 ">
+          👤
+          {/* In or SignIn */}
         </div>
+        <Link to="/favorite" className="flex justify-center items-center mr-4 h-8 w-8 bg-sky-100 rounded-full hover:bg-sky-300 ">
+          <p>🧡</p>
+        </Link>
         <Link to="/cart" className="flex justify-center items-center mr-4 h-8 w-8 bg-sky-100 rounded-full hover:bg-sky-300 ">
           <p>🛒</p>
         </Link>

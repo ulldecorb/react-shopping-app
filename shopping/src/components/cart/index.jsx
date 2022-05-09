@@ -6,7 +6,7 @@ function Cart({ cart }) {
   console.log(cart);
   return (
     <main className="bg-yellow-600 mt-12 w-full h-screen">
-      <h2 className="w-full text-center text-4xl text-lime-400 font-koulen ">Cart</h2>
+      <h2 className="w-full text-center text-4xl text-lime-400 font-koulen flex flex-wrap justify-center content-start ">Cart</h2>
       {/* <h3>{user.userName}</h3> */}
       {cart.map((product) => (
         <article key={product.id}>
