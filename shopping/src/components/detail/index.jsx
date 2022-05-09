@@ -9,15 +9,18 @@ function Detail({ products }) {
     productName, ntf, price, stock, category
   } = getProductByParams();
 
-  console.log('paramsId: ', paramsId.productId);
-  console.log(getProductByParams());
   return (
-    <main className="mt-12">
+    <main className="mt-12 flex justify-center items-center">
       {getProductByParams()
         ? (
-          <article className="h-full w-full bg-slate-800 shadow-md text-slate-50">
-            <h2 className="text-xl w-full text-center">{productName.toUpperCase()}</h2>
-            <p className="w-20 h-20 bg-slate-200 rounded-md text-2xl flex justify-center items-center ">{ntf}</p>
+          <article className="h-screen w-full bg-slate-800 shadow-md text-slate-50 flex flex-col justify-start items-center">
+            <p className="w-1/2 h-1/2 bg-slate-200 rounded-md text-[30vmin] flex justify-center items-center ">{ntf}</p>
+            <h3>
+              Category:
+              {' '}
+              {category}
+            </h3>
+            <h2 className="text-6xl w-full text-center">{productName.toUpperCase()}</h2>
             <p>
               Price:
               {' '}
@@ -25,11 +28,6 @@ function Detail({ products }) {
               €
             </p>
             <p>{stock}</p>
-            <h3>
-              Category:
-              {' '}
-              {category}
-            </h3>
           </article>
         )
         : (<h2> No articles available</h2>)}
