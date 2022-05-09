@@ -2,11 +2,11 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import ProductCard from '../product-card';
 
-function Favorites({ cart, handleCliker }) {
+function Favorites({ favorites, handleCliker }) {
   return (
     <main>
       <h2>Favorites</h2>
-      {cart.map((product) => (
+      {favorites.map((product) => (
         <ProductCard key={product.id} product={product} handleCliker={handleCliker} />
       ))}
 
@@ -15,7 +15,9 @@ function Favorites({ cart, handleCliker }) {
 }
 
 Favorites.propTypes = {
-  cart: PropTypes.arrayOf(PropTypes.obj.isRequired).isRequired,
+  favorites: PropTypes.arrayOf(
+    PropTypes.obj
+  ).isRequired,
   handleCliker: PropTypes.func.isRequired
 };
 

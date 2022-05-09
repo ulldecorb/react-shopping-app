@@ -9,17 +9,15 @@ import { Header } from './components/header';
 import Home from './components/home';
 import Gallery from './components/gallery';
 import Cart from './components/cart';
+import Favorites from './components/favorites';
 import NotFound from './components/not-found';
 import Detail from './components/detail';
 import { Products, User } from './constants/products';
 
 function App() {
   const [user, setUser] = useState(User);
-  const [cart, setCart] = useState([
-    // {
-    //   ntf: '☠', id: '9', productName: 'death', category: 'human', stock: 1, price: 666, quanty: 8
-    // }
-  ]);
+  const [cart, setCart] = useState([]);
+  const [favorites, setFavorites] = useState([]);
 
   const getCartList = () => {
     const { userCart } = User;
@@ -44,13 +42,12 @@ function App() {
         const newProduct = Products.find((x) => x.id === cur);
         return [...arr, newProduct];
       },
-      // [...arr, arrayOfObject.find((x) => cur.id === x.id)]
-
       []
     );
     console.log('favoritesIdList : ', favoritesIdList);
-    return favoritesIdList;
+    setFavorites(favoritesIdList);
   };
+
   useEffect(() => {
     getCartList();
     listById();
@@ -73,10 +70,10 @@ function App() {
         <Route path="/gallery" element={<Gallery products={Products} />} />
         <Route path="/" element={<Home products={Products} handleCliker={handleCliker} />} />
         <Route path="/cart" element={<Cart cart={cart} user={User} />} />
+        <Route path="/favorites" element={<Favorites favorites={favorites} user={User} />} />
         <Route path="/:productId" element={<Detail products={Products} />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
-
     </Router>
   );
 }
