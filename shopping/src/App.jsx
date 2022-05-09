@@ -44,18 +44,16 @@ function App() {
       },
       []
     );
-    console.log('favoritesIdList : ', favoritesIdList);
     setFavorites(favoritesIdList);
+    console.log('favorites: ', favorites);
   };
 
   useEffect(() => {
     getCartList();
     listById();
-    console.log('cart : ', cart);
-    console.log('Products : ', Products);
   }, []);
 
-  const handleCliker = () => {
+  const handleToggleFavorites = () => {
     const newCart = { ...user };
     newCart.cart.push({ productId: '9', quanty: 1 });
     setUser(newCart);
@@ -68,11 +66,11 @@ function App() {
       <Header />
       <Routes>
         <Route path="/gallery" element={<Gallery products={Products} />} />
-        <Route path="/" element={<Home products={Products} handleCliker={handleCliker} />} />
-        <Route path="/cart" element={<Cart cart={cart} user={User} />} />
-        <Route path="/favorites" element={<Favorites favorites={favorites} user={User} />} />
+        <Route path="/" element={<Home products={Products} handleToggleFavorites={handleToggleFavorites} />} />
+        <Route path="/cart" element={<Cart cart={cart} handleToggleFavorites={handleToggleFavorites} />} />
+        <Route path="/favorites" element={<Favorites favorites={favorites} handleToggleFavorites={handleToggleFavorites} />} />
         <Route path="/:productId" element={<Detail products={Products} />} />
-        <Route path="*" element={<NotFound />} />
+        <Route path="/error" element={<NotFound />} />
       </Routes>
     </Router>
   );

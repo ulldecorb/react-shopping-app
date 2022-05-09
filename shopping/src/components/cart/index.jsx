@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import ProductCard from '../product-card';
 
-function Cart({ cart }) {
+function Cart({ cart, handleToggleFavorites }) {
   console.log(cart);
   return (
     <main className="bg-yellow-600 mt-12 w-full h-screen">
@@ -10,7 +10,7 @@ function Cart({ cart }) {
       {/* <h3>{user.userName}</h3> */}
       {cart.map((product) => (
         <article key={product.id}>
-          <ProductCard product={product} />
+          <ProductCard product={product} handleToggleFavorites={handleToggleFavorites} />
           <p>
             Quanty:
             {' '}
@@ -25,7 +25,8 @@ function Cart({ cart }) {
 }
 
 Cart.propTypes = {
-  cart: PropTypes.arrayOf(PropTypes.object).isRequired
+  cart: PropTypes.arrayOf(PropTypes.object).isRequired,
+  handleToggleFavorites: PropTypes.func.isRequired
   // user: PropTypes.shape({
   //   userName: PropTypes.string.isRequired,
   //   userCart: PropTypes.arrayOf(PropTypes.object).isRequired,

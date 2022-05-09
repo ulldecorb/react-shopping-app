@@ -12,7 +12,7 @@ export const Header = function Header() {
           👤
           {/* In or SignIn */}
         </div>
-        <Link to="/favorite" className="flex justify-center items-center mr-4 h-8 w-8 bg-sky-100 rounded-full hover:bg-sky-300 ">
+        <Link to="/favorites" className="flex justify-center items-center mr-4 h-8 w-8 bg-sky-100 rounded-full hover:bg-sky-300 ">
           <p>🧡</p>
         </Link>
         <Link to="/cart" className="flex justify-center items-center mr-4 h-8 w-8 bg-sky-100 rounded-full hover:bg-sky-300 ">
