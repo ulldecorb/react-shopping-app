@@ -1,6 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import ProductCard from '../product-card';
+import Total from '../total';
 
 function Cart({ cart, handleToggleFavorites }) {
   console.log(cart);
@@ -19,7 +20,7 @@ function Cart({ cart, handleToggleFavorites }) {
           </p>
         </article>
       ))}
-
+      <Total cart={cart} />
     </main>
   );
 }
