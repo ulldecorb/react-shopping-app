@@ -18,7 +18,7 @@ export const Products = [
     ntf: '🌼', id: '6', productName: 'flower', category: 'flower', stock: 3, price: 99
   },
   {
-    ntf: '🌹', id: '7', productName: 'rose', category: 'flower', stock: 4, price: 60
+    ntf: '🌹', id: '7', productName: 'rose', category: 'flower', stock: 7, price: 60
   },
   {
     ntf: '🥑', id: '8', productName: 'avocado', category: 'meal', stock: 9, price: 34
@@ -38,7 +38,7 @@ export const User = {
   userName: 'john Doe',
   userCart: [
     { productId: '7', quanty: 5 },
-    { productId: '3', quanty: 35 }
+    { productId: '3', quanty: 3 }
   ],
   favoritesId: ['7', '5']
 };

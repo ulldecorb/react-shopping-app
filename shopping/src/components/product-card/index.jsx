@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 
 function ProductCard({ product, handleToggleFavorites }) {
   const {
@@ -14,20 +15,23 @@ function ProductCard({ product, handleToggleFavorites }) {
     <article
       className="relative h-48 w-48 m-8 rounded-md bg-slate-800 shadow-md  shadow-stone-800  cursor-pointer hover:outline outline-offset-2 outline-2 text-slate-50 flex flex-col items-center"
     >
-      <h2 className="text-xl w-full text-center font-koulen">{productName.toUpperCase()}</h2>
-      <p className="w-20 h-20 bg-slate-200 rounded-md text-5xl hover:text-6xl flex justify-center items-center ">{ntf}</p>
-      <p>
-        Price:
-        {' '}
-        {price}
-        €
-      </p>
-      <p>{stock}</p>
-      <h3>
-        Category:
-        {' '}
-        {category}
-      </h3>
+      <Link to={`/${product.id}`}>
+
+        <h2 className="text-xl w-full text-center font-koulen">{productName.toUpperCase()}</h2>
+        <p className="w-20 h-20 bg-slate-200 rounded-md text-5xl hover:text-6xl flex justify-center items-center ">{ntf}</p>
+        <p>
+          Price:
+          {' '}
+          {price}
+          €
+        </p>
+        <p>{stock}</p>
+        <h3>
+          Category:
+          {' '}
+          {category}
+        </h3>
+      </Link>
       <div
         className="h-12 w-12 absolute -top-4 -right-4 bg-slate-400 hover:bg-slate-50 rounded-full flex justify-center items-center"
         onClick={() => handleToggleFavoritesClick(id)}
@@ -35,9 +39,7 @@ function ProductCard({ product, handleToggleFavorites }) {
         role="button"
         aria-hidden
       >
-
         <p className="text-2xl">🧡</p>
-
       </div>
     </article>
   );

@@ -10,7 +10,6 @@ export const Header = function Header() {
       <div className="flex flex-row basis-1/4 justify-end">
         <div className="flex justify-center items-center mr-4 h-8 w-8 bg-sky-100 rounded-full hover:bg-sky-300 ">
           👤
-          {/* In or SignIn */}
         </div>
         <Link to="/favorites" className="flex justify-center items-center mr-4 h-8 w-8 bg-sky-100 rounded-full hover:bg-sky-300 ">
           <p>🧡</p>
