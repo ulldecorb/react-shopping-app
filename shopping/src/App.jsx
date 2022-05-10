@@ -71,10 +71,17 @@ function App() {
     const { id, newQuanty } = prop;
     const newUser = { ...user };
     const { userCart } = newUser;
-    const newlUserCart = userCart.map((x) => (x.productId === id
-      ? { ...x, quanty: newQuanty }
-      : x));
-    const finalUser = { ...newUser, userCart: newlUserCart };
+    let finalUser = {};
+
+    if (newQuanty === 0) {
+      const newUserCart = userCart.filter((x) => x.productId !== id);
+      finalUser = { ...newUser, userCart: newUserCart };
+    } else {
+      const newUserCart = userCart.map((x) => (x.productId === id
+        ? { ...x, quanty: newQuanty }
+        : x));
+      finalUser = { ...newUser, userCart: newUserCart };
+    }
     setUser(finalUser);
   };
 

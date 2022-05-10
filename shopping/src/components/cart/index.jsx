@@ -10,34 +10,36 @@ function Cart({ cart, handleToggleFavorites, handleQuanty }) {
   }
 
   return (
-    <main className="bg-yellow-600 pt-12 w-full h-screen flex flex-wrap justify-center content-start ">
+    <main className="bg-yellow-600 pt-12 w-full h-screen">
       <h2 className="w-full text-center text-4xl text-lime-400 font-koulen flex flex-wrap justify-center content-start ">Cart</h2>
       {/* <h3>{user.userName}</h3> */}
-      {cart
-        ? cart.map((product) => (
-          <article key={product.id}>
-            <ProductCard product={product} handleToggleFavorites={handleToggleFavorites} />
-            <p>
-              Quanty:
-              {' '}
-              {product.quanty}
-            </p>
+      <section className="flex flex-wrap justify-center content-start ">
 
-            <input
-              className="out-of-range:border-red-500 "
-              value={product.quanty}
-              type="number"
-              id="quantity"
-              name="quantity"
-              min="0"
-              max={product.stock}
-              onChange={(e) => getNumber(e, product.id)}
-            />
-          </article>
-        ))
-        : (
-          <h2>No products on cart</h2>
-        )}
+        {cart.length > 0
+          ? cart.map((product) => (
+            <article key={product.id}>
+              <ProductCard product={product} handleToggleFavorites={handleToggleFavorites} />
+              <p>
+                Quanty:
+                {' '}
+                {product.quanty}
+              </p>
+              <input
+                className="out-of-range:border-red-500 "
+                value={product.quanty}
+                type="number"
+                id="quantity"
+                name="quantity"
+                min="0"
+                max={product.stock}
+                onChange={(e) => getNumber(e, product.id)}
+              />
+            </article>
+          ))
+          : (
+            <h2 className="mt-40 text-4xl text-orange-400">No products on cart</h2>
+          )}
+      </section>
       <Total cart={cart} />
     </main>
   );
