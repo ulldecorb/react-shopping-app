@@ -1,5 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import { Link } from 'react-router-dom';
 import ProductCard from '../product-card';
 import Total from '../total';
 
@@ -16,7 +17,10 @@ function Cart({ cart, handleToggleFavorites, handleQuanty }) {
       {cart
         ? cart.map((product) => (
           <article key={product.id}>
-            <ProductCard product={product} handleToggleFavorites={handleToggleFavorites} />
+            <Link to={`/${product.id}`}>
+
+              <ProductCard product={product} handleToggleFavorites={handleToggleFavorites} />
+            </Link>
             <p>
               Quanty:
               {' '}
