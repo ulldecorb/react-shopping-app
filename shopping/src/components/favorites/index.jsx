@@ -1,6 +1,5 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Link } from 'react-router-dom';
 import ProductCard from '../product-card';
 
 function Favorites({ favorites, handleToggleFavorites }) {
@@ -13,14 +12,11 @@ function Favorites({ favorites, handleToggleFavorites }) {
       </h2>
       {favorites.length > 0
         ? favorites.map((product) => (
-
-          <Link to={`/${product.id}`}>
-            <ProductCard
-              key={product.id}
-              product={product}
-              handleToggleFavorites={handleToggleFavorites}
-            />
-          </Link>
+          <ProductCard
+            key={product.id}
+            product={product}
+            handleToggleFavorites={handleToggleFavorites}
+          />
         ))
         : <h2>No Favorites Products yet</h2>}
     </main>
