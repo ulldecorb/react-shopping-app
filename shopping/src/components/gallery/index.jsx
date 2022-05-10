@@ -1,16 +1,20 @@
 import React from 'react';
-import { Products } from '../../constants/products';
+import PropTypes from 'prop-types';
 
-function Gallery() {
+function Gallery({ products }) {
   return (
     <main>
       <ul>
-        {Products.map((product) => (
+        {products.map((product) => (
           <h2 key={product.id}>{product.ntf}</h2>
         ))}
       </ul>
     </main>
   );
 }
+
+Gallery.propTypes = {
+  products: PropTypes.arrayOf(PropTypes.object).isRequired
+};
 
 export default Gallery;

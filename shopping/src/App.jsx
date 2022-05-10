@@ -18,6 +18,11 @@ function App() {
   const [user, setUser] = useState({ ...User });
   const [cart, setCart] = useState([]);
   const [favorites, setFavorites] = useState([]);
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    setProducts(Products);
+  }, []);
 
   const getCartList = () => {
     const { userCart } = user;
@@ -77,8 +82,8 @@ function App() {
     <Router>
       <Header />
       <Routes>
-        <Route path="/gallery" element={<Gallery products={Products} />} />
-        <Route path="/" element={<Home products={Products} handleToggleFavorites={handleToggleFavorites} />} />
+        <Route path="/gallery" element={<Gallery products={products} />} />
+        <Route path="/" element={<Home products={products} handleToggleFavorites={handleToggleFavorites} />} />
         <Route path="/cart" element={<Cart cart={cart} handleToggleFavorites={handleToggleFavorites} handleQuanty={handleQuanty} />} />
         <Route path="/favorites" element={<Favorites favorites={favorites} handleToggleFavorites={handleToggleFavorites} />} />
         <Route path="/:productId" element={<Detail products={Products} />} />
