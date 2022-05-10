@@ -20,12 +20,12 @@ function Cart({ cart, handleToggleFavorites, handleQuanty }) {
             <p>
               Quanty:
               {' '}
-              {/* {user.cart[0].quanty} */}
               {product.quanty}
             </p>
 
             <input
-              placeHolder="0"
+              className="out-of-range:border-red-500 "
+              value={product.quanty}
               type="number"
               id="quantity"
               name="quantity"

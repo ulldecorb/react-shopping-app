@@ -35,7 +35,7 @@ function App() {
     setCart(cartList);
   };
 
-  const listById = () => {
+  const getfavoriteList = () => {
     const { favoritesId } = user;
     const favoritesIdList = favoritesId.reduce(
       (arr, cur) => {
@@ -49,7 +49,7 @@ function App() {
 
   useEffect(() => {
     getCartList();
-    listById();
+    getfavoriteList();
   }, [user]);
 
   const handleToggleFavorites = (id) => {

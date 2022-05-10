@@ -10,13 +10,15 @@ function Favorites({ favorites, handleToggleFavorites }) {
       >
         Favorites
       </h2>
-      {favorites.map((product) => (
-        <ProductCard
-          key={product.id}
-          product={product}
-          handleToggleFavorites={handleToggleFavorites}
-        />
-      ))}
+      {favorites.length > 0
+        ? favorites.map((product) => (
+          <ProductCard
+            key={product.id}
+            product={product}
+            handleToggleFavorites={handleToggleFavorites}
+          />
+        ))
+        : <h2>No Favorites Products yet</h2>}
     </main>
   );
 }
