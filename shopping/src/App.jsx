@@ -62,13 +62,24 @@ function App() {
     setUser(newUser);
   };
 
+  const handleQuanty = (prop) => {
+    const { id, newQuanty } = prop;
+    const newUser = { ...user };
+    const { userCart } = newUser;
+    const newlUserCart = userCart.map((x) => (x.productId === id
+      ? { ...x, quanty: newQuanty }
+      : x));
+    const finalUser = { ...newUser, userCart: newlUserCart };
+    setUser(finalUser);
+  };
+
   return (
     <Router>
       <Header />
       <Routes>
         <Route path="/gallery" element={<Gallery products={Products} />} />
         <Route path="/" element={<Home products={Products} handleToggleFavorites={handleToggleFavorites} />} />
-        <Route path="/cart" element={<Cart cart={cart} handleToggleFavorites={handleToggleFavorites} />} />
+        <Route path="/cart" element={<Cart cart={cart} handleToggleFavorites={handleToggleFavorites} handleQuanty={handleQuanty} />} />
         <Route path="/favorites" element={<Favorites favorites={favorites} handleToggleFavorites={handleToggleFavorites} />} />
         <Route path="/:productId" element={<Detail products={Products} />} />
         <Route path="/error" element={<NotFound />} />

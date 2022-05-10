@@ -4,9 +4,8 @@ import ProductCard from '../product-card';
 import Total from '../total';
 
 function Cart({ cart, handleToggleFavorites, handleQuanty }) {
-  function getNumber(event) {
-    console.log(parseInt(event.target.value, 10));
-    const prop = { id: 'product.id', quanty: parseInt(event.target.value, 10) };
+  function getNumber(event, id) {
+    const prop = { id, newQuanty: parseInt(event.target.value, 10) };
     handleQuanty(prop);
   }
 
@@ -14,27 +13,31 @@ function Cart({ cart, handleToggleFavorites, handleQuanty }) {
     <main className="bg-yellow-600 pt-12 w-full h-screen flex flex-wrap justify-center content-start ">
       <h2 className="w-full text-center text-4xl text-lime-400 font-koulen flex flex-wrap justify-center content-start ">Cart</h2>
       {/* <h3>{user.userName}</h3> */}
-      {cart.map((product) => (
-        <article key={product.id}>
-          <ProductCard product={product} handleToggleFavorites={handleToggleFavorites} />
-          <p>
-            Quanty:
-            {' '}
-            {/* {user.cart[0].quanty} */}
-            {product.quanty}
-          </p>
+      {cart
+        ? cart.map((product) => (
+          <article key={product.id}>
+            <ProductCard product={product} handleToggleFavorites={handleToggleFavorites} />
+            <p>
+              Quanty:
+              {' '}
+              {/* {user.cart[0].quanty} */}
+              {product.quanty}
+            </p>
 
-          <input
-            placeHolder="0"
-            type="number"
-            id="quantity"
-            name="quantity"
-            min="0"
-            max={product.stock}
-            onChange={getNumber}
-          />
-        </article>
-      ))}
+            <input
+              placeHolder="0"
+              type="number"
+              id="quantity"
+              name="quantity"
+              min="0"
+              max={product.stock}
+              onChange={(e) => getNumber(e, product.id)}
+            />
+          </article>
+        ))
+        : (
+          <h2>No products on cart</h2>
+        )}
       <Total cart={cart} />
     </main>
   );
