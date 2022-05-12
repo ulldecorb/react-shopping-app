@@ -6,12 +6,7 @@ function CartProductCard({
   product, handleToggleFavorites, checkFavorites, handleQuanty
 }) {
   const [counterQuanty, setCounterQuanty] = useState(product.quanty);
-  // const [id] = product;
   function handleQuantyClick(event) {
-  // function handleQuantyClick(event, productId) {
-    // const prop = { productId, newQuanty: parseInt(event.target.value, 10) };
-    // handleQuanty(prop);
-
     setCounterQuanty(parseInt(event.target.value, 10));
   }
 
@@ -19,7 +14,6 @@ function CartProductCard({
     const getId = product.id;
     const prop = { id: getId, newQuanty: counterQuanty };
     handleQuanty(prop);
-    // setCounterQuanty(4);
   };
 
   return (

@@ -17,14 +17,21 @@ function Detail({ products, handleQuanty, cart }) {
   }
   const [product, setProduct] = useState(getProduct());
 
+  const [counterQuanty, setCounterQuanty] = useState(product.quanty);
+  function handleQuantyClick(event) {
+    setCounterQuanty(parseInt(event.target.value, 10));
+  }
+
   useEffect(() => {
     setProduct(getProduct());
+    // setCounterQuanty(product.quanty);
   }, [cart]);
 
-  function handleQuantyClick(event, productId) {
-    const prop = { productId, newQuanty: parseInt(event.target.value, 10) };
+  const sendQuanty = () => {
+    const getId = product.id;
+    const prop = { id: getId, newQuanty: counterQuanty };
     handleQuanty(prop);
-  }
+  };
 
   return (
     <main className="mt-12 flex justify-center items-center">
@@ -46,15 +53,16 @@ function Detail({ products, handleQuanty, cart }) {
             </p>
             <p>{product.stock}</p>
             <input
-              className="out-of-range:border-red-500 "
-              value={product.quanty}
+              className="text-gray-900 "
+              value={counterQuanty}
               type="number"
               id="quantity"
               name="quantity"
               min="0"
               max={product.stock}
-              onChange={(e) => handleQuantyClick(e, product.id)}
+              onChange={(e) => handleQuantyClick(e)}
             />
+            <button type="button" onClick={sendQuanty}>Add to cart</button>
           </article>
         )
         : (<h2> No articles available</h2>)}
