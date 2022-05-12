@@ -1,15 +1,21 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-function ProductCard({ product, handleToggleFavorites }) {
+function ProductCard({ product, handleToggleFavorites, checkFavorites }) {
+  const [favoriteFlag, setFavoriteFlag] = useState(false);
   const {
     productName, id, ntf, price, stock, category
   } = product;
 
   const handleToggleFavoritesClick = (productId) => {
     handleToggleFavorites(productId);
+    setFavoriteFlag(!favoriteFlag);
   };
+
+  useEffect(() => {
+    setFavoriteFlag(checkFavorites(id));
+  }, []);
 
   return (
     <article
@@ -38,7 +44,9 @@ function ProductCard({ product, handleToggleFavorites }) {
         role="button"
         aria-hidden
       >
-        <p className="text-2xl">🧡</p>
+        {favoriteFlag
+          ? <p className="text-2xl">🧡</p>
+          : <p className="text-2xl">🤍</p>}
       </div>
     </article>
   );
@@ -53,7 +61,8 @@ ProductCard.propTypes = {
     stock: PropTypes.number.isRequired,
     price: PropTypes.number.isRequired
   }).isRequired,
-  handleToggleFavorites: PropTypes.func.isRequired
+  handleToggleFavorites: PropTypes.func.isRequired,
+  checkFavorites: PropTypes.func.isRequired
 };
 
 export default ProductCard;

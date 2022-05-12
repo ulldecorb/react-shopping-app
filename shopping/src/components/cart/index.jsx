@@ -3,7 +3,9 @@ import PropTypes from 'prop-types';
 import ProductCard from '../product-card';
 import Total from '../total';
 
-function Cart({ cart, handleToggleFavorites, handleQuanty }) {
+function Cart({
+  cart, handleToggleFavorites, handleQuanty, checkFavorites
+}) {
   function handleQuantyClick(event, id) {
     const prop = { id, newQuanty: parseInt(event.target.value, 10) };
     handleQuanty(prop);
@@ -17,7 +19,11 @@ function Cart({ cart, handleToggleFavorites, handleQuanty }) {
         {cart.length > 0
           ? cart.map((product) => (
             <article key={product.id}>
-              <ProductCard product={product} handleToggleFavorites={handleToggleFavorites} />
+              <ProductCard
+                product={product}
+                handleToggleFavorites={handleToggleFavorites}
+                checkFavorites={checkFavorites}
+              />
               <p>
                 Quanty:
                 {' '}
@@ -47,7 +53,8 @@ function Cart({ cart, handleToggleFavorites, handleQuanty }) {
 Cart.propTypes = {
   cart: PropTypes.arrayOf(PropTypes.object).isRequired,
   handleToggleFavorites: PropTypes.func.isRequired,
-  handleQuanty: PropTypes.func.isRequired
+  handleQuanty: PropTypes.func.isRequired,
+  checkFavorites: PropTypes.func.isRequired
   // user: PropTypes.shape({
   //   userName: PropTypes.string.isRequired,
   //   userCart: PropTypes.arrayOf(PropTypes.object).isRequired,

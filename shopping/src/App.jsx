@@ -85,14 +85,16 @@ function App() {
     setUser(finalUser);
   };
 
+  const checkFavorites = (id) => user.favoritesId.some((x) => x === id);
+
   return (
     <Router>
       <Header />
       <Routes>
         <Route path="/gallery" element={<Gallery products={products} />} />
-        <Route path="/" element={<Home products={products} handleToggleFavorites={handleToggleFavorites} />} />
-        <Route path="/cart" element={<Cart cart={cart} handleToggleFavorites={handleToggleFavorites} handleQuanty={handleQuanty} />} />
-        <Route path="/favorites" element={<Favorites favorites={favorites} handleToggleFavorites={handleToggleFavorites} />} />
+        <Route path="/" element={<Home products={products} handleToggleFavorites={handleToggleFavorites} checkFavorites={checkFavorites} />} />
+        <Route path="/cart" element={<Cart cart={cart} handleToggleFavorites={handleToggleFavorites} handleQuanty={handleQuanty} checkFavorites={checkFavorites} />} />
+        <Route path="/favorites" element={<Favorites favorites={favorites} handleToggleFavorites={handleToggleFavorites} checkFavorites={checkFavorites} />} />
         <Route path="/:productId" element={<Detail products={Products} handleQuanty={handleQuanty} cart={cart} />} />
         <Route path="/error" element={<NotFound />} />
       </Routes>
