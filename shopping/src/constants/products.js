@@ -37,8 +37,8 @@ export const Products = [
 export const User = {
   userName: 'john Doe',
   userCart: [
-    { productId: '7', quanty: 5 },
-    { productId: '3', quanty: 3 }
+    // { productId: '7', quanty: 5 },
+    // { productId: '3', quanty: 3 }
   ],
   favoritesId: ['7', '5']
 };

@@ -93,7 +93,7 @@ function App() {
         <Route path="/" element={<Home products={products} handleToggleFavorites={handleToggleFavorites} />} />
         <Route path="/cart" element={<Cart cart={cart} handleToggleFavorites={handleToggleFavorites} handleQuanty={handleQuanty} />} />
         <Route path="/favorites" element={<Favorites favorites={favorites} handleToggleFavorites={handleToggleFavorites} />} />
-        <Route path="/:productId" element={<Detail products={Products} />} />
+        <Route path="/:productId" element={<Detail products={Products} handleQuanty={handleQuanty} cart={cart} />} />
         <Route path="/error" element={<NotFound />} />
       </Routes>
     </Router>
