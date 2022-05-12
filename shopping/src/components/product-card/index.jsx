@@ -1,22 +1,27 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 import { Link } from 'react-router-dom';
 
-function ProductCard({ product, handleToggleFavorites }) {
+function ProductCard({ product, handleToggleFavorites, checkFavorites }) {
+  const [favoriteFlag, setFavoriteFlag] = useState(false);
   const {
     productName, id, ntf, price, stock, category
   } = product;
 
   const handleToggleFavoritesClick = (productId) => {
     handleToggleFavorites(productId);
+    setFavoriteFlag(!favoriteFlag);
   };
+
+  useEffect(() => {
+    setFavoriteFlag(checkFavorites(id));
+  }, []);
 
   return (
     <article
       className="relative h-48 w-48 m-8 rounded-md bg-slate-800 shadow-md  shadow-stone-800  cursor-pointer hover:outline outline-offset-2 outline-2 text-slate-50 flex flex-col items-center"
     >
-      <Link to={`/${product.id}`}>
-
+      <Link className="h-48 w-48 flex flex-col items-center" to={`/${product.id}`}>
         <h2 className="text-xl w-full text-center font-koulen">{productName.toUpperCase()}</h2>
         <p className="w-20 h-20 bg-slate-200 rounded-md text-5xl hover:text-6xl flex justify-center items-center ">{ntf}</p>
         <p>
@@ -39,7 +44,9 @@ function ProductCard({ product, handleToggleFavorites }) {
         role="button"
         aria-hidden
       >
-        <p className="text-2xl">🧡</p>
+        {favoriteFlag
+          ? <p className="text-2xl">🧡</p>
+          : <p className="text-2xl">🤍</p>}
       </div>
     </article>
   );
@@ -54,7 +61,8 @@ ProductCard.propTypes = {
     stock: PropTypes.number.isRequired,
     price: PropTypes.number.isRequired
   }).isRequired,
-  handleToggleFavorites: PropTypes.func.isRequired
+  handleToggleFavorites: PropTypes.func.isRequired,
+  checkFavorites: PropTypes.func.isRequired
 };
 
 export default ProductCard;

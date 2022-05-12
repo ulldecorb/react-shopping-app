@@ -14,10 +14,12 @@ function Total({ cart }) {
   }, []);
 
   return (
-    <div>
+    <div className="w-full m-6 text-center">
       Total:
       {' '}
-      {totalPrice}
+      <strong className="text-lg">
+        {totalPrice}
+      </strong>
       €
     </div>
   );

@@ -18,6 +18,11 @@ function App() {
   const [user, setUser] = useState({ ...User });
   const [cart, setCart] = useState([]);
   const [favorites, setFavorites] = useState([]);
+  const [products, setProducts] = useState([]);
+
+  useEffect(() => {
+    setProducts(Products);
+  }, []);
 
   const getCartList = () => {
     const { userCart } = user;
@@ -66,22 +71,31 @@ function App() {
     const { id, newQuanty } = prop;
     const newUser = { ...user };
     const { userCart } = newUser;
-    const newlUserCart = userCart.map((x) => (x.productId === id
-      ? { ...x, quanty: newQuanty }
-      : x));
-    const finalUser = { ...newUser, userCart: newlUserCart };
+    let finalUser = {};
+
+    if (newQuanty === 0) {
+      const newUserCart = userCart.filter((x) => x.productId !== id);
+      finalUser = { ...newUser, userCart: newUserCart };
+    } else {
+      const newUserCart = userCart.map((x) => (x.productId === id
+        ? { ...x, quanty: newQuanty }
+        : x));
+      finalUser = { ...newUser, userCart: newUserCart };
+    }
     setUser(finalUser);
   };
+
+  const checkFavorites = (id) => user.favoritesId.some((x) => x === id);
 
   return (
     <Router>
       <Header />
       <Routes>
-        <Route path="/gallery" element={<Gallery products={Products} />} />
-        <Route path="/" element={<Home products={Products} handleToggleFavorites={handleToggleFavorites} />} />
-        <Route path="/cart" element={<Cart cart={cart} handleToggleFavorites={handleToggleFavorites} handleQuanty={handleQuanty} />} />
-        <Route path="/favorites" element={<Favorites favorites={favorites} handleToggleFavorites={handleToggleFavorites} />} />
-        <Route path="/:productId" element={<Detail products={Products} />} />
+        <Route path="/gallery" element={<Gallery products={products} />} />
+        <Route path="/" element={<Home products={products} handleToggleFavorites={handleToggleFavorites} checkFavorites={checkFavorites} />} />
+        <Route path="/cart" element={<Cart cart={cart} handleToggleFavorites={handleToggleFavorites} handleQuanty={handleQuanty} checkFavorites={checkFavorites} />} />
+        <Route path="/favorites" element={<Favorites favorites={favorites} handleToggleFavorites={handleToggleFavorites} checkFavorites={checkFavorites} />} />
+        <Route path="/:productId" element={<Detail products={Products} handleQuanty={handleQuanty} cart={cart} />} />
         <Route path="/error" element={<NotFound />} />
       </Routes>
     </Router>
