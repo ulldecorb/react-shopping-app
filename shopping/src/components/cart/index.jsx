@@ -1,16 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import ProductCard from '../product-card';
+import CartProductCard from '../cartProductCard';
 import Total from '../total';
 
 function Cart({
   cart, handleToggleFavorites, handleQuanty, checkFavorites
 }) {
-  function handleQuantyClick(event, id) {
-    const prop = { id, newQuanty: parseInt(event.target.value, 10) };
-    handleQuanty(prop);
-  }
-
   return (
     <main className="bg-yellow-600 pt-12 w-full h-screen">
       <h2 className="w-full text-center text-4xl text-lime-400 font-koulen flex flex-wrap justify-center content-start ">Cart</h2>
@@ -18,28 +13,13 @@ function Cart({
 
         {cart.length > 0
           ? cart.map((product) => (
-            <article key={product.id}>
-              <ProductCard
-                product={product}
-                handleToggleFavorites={handleToggleFavorites}
-                checkFavorites={checkFavorites}
-              />
-              <p>
-                Quanty:
-                {' '}
-                {product.quanty}
-              </p>
-              <input
-                className="out-of-range:border-red-500 "
-                value={product.quanty}
-                type="number"
-                id="quantity"
-                name="quantity"
-                min="0"
-                max={product.stock}
-                onChange={(e) => handleQuantyClick(e, product.id)}
-              />
-            </article>
+            <CartProductCard
+              key={product.id}
+              product={product}
+              handleToggleFavorites={handleToggleFavorites}
+              checkFavorites={checkFavorites}
+              handleQuanty={handleQuanty}
+            />
           ))
           : (
             <h2 className="mt-40 text-4xl text-orange-400">No products on cart</h2>
