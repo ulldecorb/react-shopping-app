@@ -97,8 +97,17 @@ function App() {
     <Router>
       <Header />
       <Routes>
-        <Route path="/gallery" element={<Gallery products={products} />} />
-        <Route path="/" element={<Home products={products} handleToggleFavorites={handleToggleFavorites} checkFavorites={checkFavorites} />} />
+        <Route path="/gallery" element={<Gallery products={products} checkFavorites={checkFavorites} handleToggleFavorites={handleToggleFavorites} />} />
+        <Route
+          path="/"
+          element={(
+            <Home
+              products={products}
+              handleToggleFavorites={handleToggleFavorites}
+              checkFavorites={checkFavorites}
+            />
+          )}
+        />
         <Route path="/cart" element={<Cart cart={cart} handleToggleFavorites={handleToggleFavorites} handleQuanty={handleQuanty} checkFavorites={checkFavorites} />} />
         <Route path="/favorites" element={<Favorites favorites={favorites} handleToggleFavorites={handleToggleFavorites} checkFavorites={checkFavorites} />} />
         <Route path="/:productId" element={<Detail products={Products} handleQuanty={handleQuanty} cart={cart} />} />
