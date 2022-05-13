@@ -1,4 +1,3 @@
-// import React, { useState } from 'react';
 import React, { useState, useEffect } from 'react';
 import {
   BrowserRouter as Router,
@@ -77,10 +76,17 @@ function App() {
       const newUserCart = userCart.filter((x) => x.productId !== id);
       finalUser = { ...newUser, userCart: newUserCart };
     } else {
-      const newUserCart = userCart.map((x) => (x.productId === id
-        ? { ...x, quanty: newQuanty }
-        : x));
-      finalUser = { ...newUser, userCart: newUserCart };
+      if (userCart.some((x) => x.productId === id)) {
+        const newUserCart = userCart.map((x) => (x.productId === id
+          ? { productId: x.productId, quanty: newQuanty }
+          : x));
+        finalUser = { ...newUser, userCart: newUserCart };
+      }
+      if (!userCart.some((x) => x.productId === id)) {
+        const newProduct = { productId: id, quanty: newQuanty };
+        const newUserCart = [...userCart, newProduct];
+        finalUser = { ...newUser, userCart: newUserCart };
+      }
     }
     setUser(finalUser);
   };

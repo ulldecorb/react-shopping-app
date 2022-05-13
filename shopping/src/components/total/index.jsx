@@ -11,7 +11,7 @@ function Total({ cart }) {
 
   useEffect(() => {
     setTotalPrice(getTotalPrice());
-  }, []);
+  }, [cart]);
 
   return (
     <div className="w-full m-6 text-center">
