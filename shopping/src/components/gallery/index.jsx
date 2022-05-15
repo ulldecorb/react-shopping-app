@@ -7,8 +7,6 @@ function Gallery({ products, handleToggleFavorites, checkFavorites }) {
   const gallery = useParams();
 
   const categoryProducts = products.filter((product) => product.category === gallery.gallery);
-  console.log(categoryProducts);
-  console.log(gallery.gallery);
 
   return (
     <main className="bg-slate-600 pt-12 w-full h-screen flex flex-wrap justify-center content-start ">
@@ -17,7 +15,7 @@ function Gallery({ products, handleToggleFavorites, checkFavorites }) {
       >
         {gallery.gallery}
       </h2>
-      <ul>
+      <section className="flex flex-wrap justify-center content-start ">
         {categoryProducts.map((product) => (
           <ProductCard
             key={product.id}
@@ -26,7 +24,7 @@ function Gallery({ products, handleToggleFavorites, checkFavorites }) {
             checkFavorites={checkFavorites}
           />
         ))}
-      </ul>
+      </section>
     </main>
   );
 }

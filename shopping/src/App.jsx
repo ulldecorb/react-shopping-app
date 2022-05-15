@@ -110,7 +110,7 @@ function App() {
         />
         <Route path="/cart" element={<Cart cart={cart} handleToggleFavorites={handleToggleFavorites} handleQuanty={handleQuanty} checkFavorites={checkFavorites} />} />
         <Route path="/favorites" element={<Favorites favorites={favorites} handleToggleFavorites={handleToggleFavorites} checkFavorites={checkFavorites} />} />
-        <Route path="/:productId" element={<Detail products={Products} handleQuanty={handleQuanty} cart={cart} />} />
+        <Route path="/:gallery/:productId" element={<Detail products={Products} handleQuanty={handleQuanty} cart={cart} />} />
         <Route path="/error" element={<NotFound />} />
       </Routes>
     </Router>
