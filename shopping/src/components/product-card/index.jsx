@@ -21,7 +21,7 @@ function ProductCard({ product, handleToggleFavorites, checkFavorites }) {
     <article
       className="relative h-48 w-48 m-8 rounded-md bg-slate-800 shadow-md  shadow-stone-800  cursor-pointer hover:outline outline-offset-2 outline-2 text-slate-50 flex flex-col items-center"
     >
-      <Link className="h-48 w-48 flex flex-col items-center" to={`/${product.id}`}>
+      <Link className="h-48 w-48 flex flex-col items-center" to={`/${product.category}/${product.id}`}>
         <h2 className="text-xl w-full text-center font-koulen">{productName.toUpperCase()}</h2>
         <p className="w-20 h-20 bg-slate-200 rounded-md text-5xl hover:text-6xl flex justify-center items-center ">{ntf}</p>
         <p>

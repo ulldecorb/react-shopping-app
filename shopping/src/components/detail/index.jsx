@@ -3,15 +3,15 @@ import { useParams } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 function Detail({ products, handleQuanty, cart }) {
-  const paramsId = useParams();
+  const params = useParams();
 
   function getProduct() {
-    const productOnCart = paramsId.productId === cart.find((x) => x.id === paramsId.productId)?.id;
+    const productOnCart = params.productId === cart.find((x) => x.id === params.productId)?.id;
     let newProduct = {};
     if (productOnCart) {
-      newProduct = cart.find((x) => x.id === paramsId.productId);
+      newProduct = cart.find((x) => x.id === params.productId);
     } else {
-      newProduct = { ...products.find((x) => x.id === paramsId.productId), quanty: 0 };
+      newProduct = { ...products.find((x) => x.id === params.productId), quanty: 0 };
     }
     return newProduct;
   }
