@@ -23,13 +23,13 @@ function CartProductCard({
         handleToggleFavorites={handleToggleFavorites}
         checkFavorites={checkFavorites}
       />
-      <p>
+      <p className="mb-2">
         Quanty:
         {' '}
         {product.quanty}
       </p>
       <input
-        className="out-of-range:border-red-500 "
+        className="out-of-range:border-red-500 text-center text-slate-800 bg-slate-100 rounded-full mr-4"
         value={counterQuanty}
         type="number"
         id="quantity"
