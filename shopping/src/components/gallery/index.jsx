@@ -1,18 +1,22 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
+import { useParams } from 'react-router-dom';
 import ProductCard from '../product-card';
 
 function Gallery({ products, handleToggleFavorites, checkFavorites }) {
-  const [categoryProducts, setCategoryProducts] = useState([]);
-  const getCategoryProducts = () => products.filter((product) => product.category === 'animal');
+  const gallery = useParams();
 
-  useEffect(() => {
-    setCategoryProducts(getCategoryProducts());
-  }, []);
+  const categoryProducts = products.filter((product) => product.category === gallery.gallery);
+  console.log(categoryProducts);
+  console.log(gallery.gallery);
 
   return (
-    <main className="pt-20">
-      <h2 className="mt-20">hola</h2>
+    <main className="bg-slate-600 pt-12 w-full h-screen flex flex-wrap justify-center content-start ">
+      <h2 className="w-full text-center text-4xl
+      text-lime-400 font-koulen flex flex-wrap justify-center content-start "
+      >
+        {gallery.gallery}
+      </h2>
       <ul>
         {categoryProducts.map((product) => (
           <ProductCard
