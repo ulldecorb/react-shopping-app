@@ -31,11 +31,13 @@ function ProductCard({ product, handleToggleFavorites, checkFavorites }) {
           €
         </p>
         <p>{stock}</p>
-        <h3>
-          Category:
-          {' '}
-          {category}
-        </h3>
+        <Link to={`/${product.category}`}>
+          <h3>
+            Category:
+            {' '}
+            {category}
+          </h3>
+        </Link>
       </Link>
       <div
         className="h-12 w-12 absolute -top-4 -right-4 bg-slate-400 hover:bg-slate-50 rounded-full flex justify-center items-center"

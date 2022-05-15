@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
 
 function Detail({ products, handleQuanty, cart }) {
@@ -24,7 +24,6 @@ function Detail({ products, handleQuanty, cart }) {
 
   useEffect(() => {
     setProduct(getProduct());
-    // setCounterQuanty(product.quanty);
   }, [cart]);
 
   const sendQuanty = () => {
@@ -39,12 +38,14 @@ function Detail({ products, handleQuanty, cart }) {
         ? (
           <article className="h-screen w-full bg-slate-800 shadow-md text-slate-50 flex flex-col justify-start items-center">
             <p className="w-1/2 h-1/2 bg-slate-200 rounded-md text-[30vmin] flex justify-center items-center ">{product.ntf}</p>
-            <h3>
-              Category:
-              {' '}
-              {product.category}
-            </h3>
-            <h2 className="text-6xl w-full text-center">{product.productName.toUpperCase()}</h2>
+            <Link to={`/${product.category}`}>
+              <h3>
+                Category:
+                {' '}
+                {product.category}
+              </h3>
+              <h2 className="text-6xl w-full text-center">{product.productName.toUpperCase()}</h2>
+            </Link>
             <p>
               Price:
               {' '}
