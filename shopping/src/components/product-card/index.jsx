@@ -31,7 +31,7 @@ function ProductCard({ product, handleToggleFavorites, checkFavorites }) {
           €
         </p>
         <p>{stock}</p>
-        <Link to={`/${product.category}`}>
+        <Link className="nav-link" to={`/${product.category}`}>
           <h3>
             Category:
             {' '}
