@@ -9,23 +9,25 @@ function Cart({
   return (
     <main className="bg-slate-600 pt-12 w-full h-screen">
       <h2 className="w-full text-center text-4xl text-lime-400 font-koulen flex flex-wrap justify-center content-start ">Cart</h2>
-      <section className="flex flex-wrap justify-center content-start ">
+      <section className="w-full grid grid-cols-3 gap-4">
+        <div className="flex flex-wrap justify-center content-start col-span-2 text-slate-200 ">
 
-        {cart.length > 0
-          ? cart.map((product) => (
-            <CartProductCard
-              key={product.id}
-              product={product}
-              handleToggleFavorites={handleToggleFavorites}
-              checkFavorites={checkFavorites}
-              handleQuanty={handleQuanty}
-            />
-          ))
-          : (
-            <h2 className="mt-40 text-4xl text-orange-400">No products on cart</h2>
-          )}
+          {cart.length > 0
+            ? cart.map((product) => (
+              <CartProductCard
+                key={product.id}
+                product={product}
+                handleToggleFavorites={handleToggleFavorites}
+                checkFavorites={checkFavorites}
+                handleQuanty={handleQuanty}
+              />
+            ))
+            : (
+              <h2 className="mt-40 text-4xl text-orange-400">No products on cart</h2>
+            )}
+        </div>
+        <Total cart={cart} classname="col-span-1" />
       </section>
-      <Total cart={cart} />
     </main>
   );
 }
