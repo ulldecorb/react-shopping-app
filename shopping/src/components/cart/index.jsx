@@ -7,7 +7,7 @@ function Cart({
   cart, handleToggleFavorites, handleQuanty, checkFavorites
 }) {
   return (
-    <main className="bg-yellow-600 pt-12 w-full h-screen">
+    <main className="bg-slate-600 pt-12 w-full h-screen">
       <h2 className="w-full text-center text-4xl text-lime-400 font-koulen flex flex-wrap justify-center content-start ">Cart</h2>
       <section className="flex flex-wrap justify-center content-start ">
 

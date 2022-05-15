@@ -4,7 +4,7 @@ import ProductCard from '../product-card';
 
 function Favorites({ favorites, handleToggleFavorites, checkFavorites }) {
   return (
-    <main className="bg-yellow-600 pt-12 w-full h-screen flex flex-wrap justify-center content-start ">
+    <main className="bg-slate-600 pt-12 w-full h-screen flex flex-wrap justify-center content-start ">
       <h2 className="w-full text-center text-4xl
       text-lime-400 font-koulen flex flex-wrap justify-center content-start "
       >
