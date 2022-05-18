@@ -36,7 +36,10 @@ function Total({ cart }) {
       <br />
       Total:
       {' '}
-      <strong className="text-lg">
+      <strong
+        data-testid="finalPrice"
+        className="text-lg"
+      >
         {finalPrice}
       </strong>
       €

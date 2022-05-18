@@ -7,3 +7,9 @@ test('renders learn react link', () => {
   const linkElement = screen.getByText(/shop center/i);
   expect(linkElement).toBeInTheDocument();
 });
+
+/* ERROR COLLECTION
+Warning: validateDOMNesting(...): <a> cannot appear as a descendant of <a>.
+xxxx
+xxxx
+*/

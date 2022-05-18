@@ -40,6 +40,7 @@ function ProductCard({ product, handleToggleFavorites, checkFavorites }) {
         </Link>
       </Link>
       <div
+        data-testid="handleFavorite"
         className="h-12 w-12 absolute -top-4 -right-4 bg-slate-400 hover:bg-slate-50 rounded-full flex justify-center items-center"
         onClick={() => handleToggleFavoritesClick(id)}
               // eslint-disable-next-line jsx-a11y/no-noninteractive-element-to-interactive-role
