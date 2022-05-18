@@ -10,12 +10,17 @@ function Gallery({ products, handleToggleFavorites, checkFavorites }) {
 
   return (
     <main className="bg-slate-600 pt-12 w-full h-screen flex flex-wrap justify-center content-start ">
-      <h2 className="w-full text-center text-4xl
+      <h2
+        className="w-full text-center text-4xl
       text-lime-400 font-koulen flex flex-wrap justify-center content-start "
+        data-testid="galleryTitle"
       >
         {gallery.gallery}
       </h2>
-      <section className="flex flex-wrap justify-center content-start ">
+      <section
+        data-testid="galleryListBox"
+        className="flex flex-wrap justify-center content-start "
+      >
         {categoryProducts.map((product) => (
           <ProductCard
             key={product.id}
